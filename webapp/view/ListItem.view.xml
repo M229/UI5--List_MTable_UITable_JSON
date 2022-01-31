@@ -1,0 +1,17 @@
+<mvc:View controllerName="sap.ui.demo.MyApp.controller.ListItem" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+    <Page id="page" title="{i18n>listItemPageTitle}" class="sapUiContentPadding">
+
+            <Button text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle" type="Back"></Button>
+
+            <Panel>
+                
+                    <List items="{ODataNorthwindModel>/Products}">
+                        <items>
+                            <ObjectListItem title="{ODataNorthwindModel>ProductName}"></ObjectListItem>
+                        </items>
+                    </List>
+
+            </Panel>
+      
+    </Page>
+</mvc:View>

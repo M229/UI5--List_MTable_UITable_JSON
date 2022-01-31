@@ -1,0 +1,70 @@
+<mvc:View controllerName="sap.ui.demo.MyApp.controller.UITable" displayBlock="true"
+	xmlns="sap.ui.table"
+	xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<m:Page id="page" title="{i18n>uiTablePageTitle}" class="sapUiContentPadding">
+		<m:Button text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle" type="Back"></m:Button>
+
+		<Table rows="{ODataNorthwindModel>/Products}" selectionMode="None" visibleRowCount="7" ariaLabelledBy="title" id="MyTable">
+			<columns>
+				<Column width="11rem">
+					<m:Label text="ProductName" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>ProductName}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="SupplierID" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>SupplierID}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="CategoryID" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>CategoryID}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="QuantityPerUnit" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>QuantityPerUnit}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="UnitPrice" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>UnitPrice}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="UnitsInStock" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>UnitsInStock}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="UnitsOnOrder" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>UnitsOnOrder}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="ReorderLevel" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>ReorderLevel}" wrapping="false" />
+					</template>
+				</Column>
+				<Column width="11rem">
+					<m:Label text="Discontinued" />
+					<template>
+						<m:Text text="{ODataNorthwindModel>Discontinued}" wrapping="false" />
+					</template>
+				</Column>
+				
+			</columns>
+		</Table>
+
+
+	</m:Page>
+</mvc:View>
