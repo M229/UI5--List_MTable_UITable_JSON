@@ -2,11 +2,11 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:custom="sap.ui.demo.MyApp.control">
-	<Page id="page" title="{i18n>mTablePageTitle}" enableScrolling="true" class="sapUiContentPadding">
+	<Page id="page" title="{i18n>mTablePageTitle} x {JSONStateModel>/State}" enableScrolling="true" class="sapUiContentPadding">
 		<content>
 			<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
 
-			<Table items="{mJSONBufferModel>/Products}">
+			<Table items="{JSONBufferModel>/Products}" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}">
 				<columns>
 					<Column>
 						<Label text="ProductName" />
@@ -37,15 +37,15 @@
 					</Column>
 				</columns>
 				<ColumnListItem>
-					<Text text="{mJSONBufferModel>ProductName}" />
-					<Text text="{mJSONBufferModel>SupplierID}" />
-					<Text text="{mJSONBufferModel>CategoryID}" />
-					<Text text="{mJSONBufferModel>QuantityPerUnit}" />
-					<Text text="{mJSONBufferModel>UnitPrice}" />
-					<Text text="{mJSONBufferModel>UnitsInStock}" />
-					<Text text="{mJSONBufferModel>UnitsOnOrder}" />
-					<Text text="{mJSONBufferModel>ReorderLevel}" />
-					<Text text="{mJSONBufferModel>Discontinued}" />
+					<Text text="{JSONBufferModel>ProductName}" />
+					<Text text="{JSONBufferModel>SupplierID}" />
+					<Text text="{JSONBufferModel>CategoryID}" />
+					<Text text="{JSONBufferModel>QuantityPerUnit}" />
+					<Text text="{JSONBufferModel>UnitPrice}" />
+					<Text text="{JSONBufferModel>UnitsInStock}" />
+					<Text text="{JSONBufferModel>UnitsOnOrder}" />
+					<Text text="{JSONBufferModel>ReorderLevel}" />
+					<Text text="{JSONBufferModel>Discontinued}" />
 				</ColumnListItem>
 			</Table>
 

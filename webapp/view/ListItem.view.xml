@@ -2,16 +2,14 @@
     <Page id="page" title="{i18n>listItemPageTitle}" class="sapUiContentPadding">
 
             <Button text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle" type="Back"></Button>
-
+            <Text id="MyText"> </Text>
             <Panel>
-                
-                    <List items="{ODataNorthwindModel>/Products}">
+
+                    <List items="{ODataNorthwindModel>/Products}" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}">
                         <items>
-                            <ObjectListItem title="{ODataNorthwindModel>ProductName}"></ObjectListItem>
+                            <ObjectListItem title="{ODataNorthwindModel>ProductName}" ></ObjectListItem>
                         </items>
                     </List>
-
-            </Panel>
-      
+            </Panel>      
     </Page>
 </mvc:View>

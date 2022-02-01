@@ -2,10 +2,10 @@
 	xmlns="sap.ui.table"
 	xmlns:m="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
-	<m:Page id="page" title="{i18n>uiTablePageTitle}" class="sapUiContentPadding">
+	<m:Page id="page" title="{i18n>uiTablePageTitle}x{JSONStateModel>/State}" class="sapUiContentPadding">
 		<m:Button text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle" type="Back"></m:Button>
 
-		<Table rows="{ODataNorthwindModel>/Products}" selectionMode="None" visibleRowCount="7" ariaLabelledBy="title" id="MyTable">
+		<Table rows="{ODataNorthwindModel>/Products}" selectionMode="None" visibleRowCount="7" ariaLabelledBy="title" id="MyTable" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" busyIndicatorDelay="0">
 			<columns>
 				<Column width="11rem">
 					<m:Label text="ProductName" />
