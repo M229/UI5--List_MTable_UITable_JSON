@@ -2,7 +2,7 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:custom="sap.ui.demo.MyApp.control">
-	<Page id="page" title="{i18n>mTablePageTitle} x {JSONStateModel>/State}" enableScrolling="true" class="sapUiContentPadding">
+	<Page id="page" title="{i18n>mTablePageTitle}" enableScrolling="true" class="sapUiContentPadding">
 		<content>
 			<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
 
