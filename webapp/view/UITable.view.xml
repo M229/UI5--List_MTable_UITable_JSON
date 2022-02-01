@@ -1,9 +1,10 @@
 <mvc:View controllerName="sap.ui.demo.MyApp.controller.UITable" displayBlock="true"
 	xmlns="sap.ui.table"
 	xmlns:m="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="sap.ui.demo.MyApp.control">
 	<m:Page id="page" title="{i18n>uiTablePageTitle}" class="sapUiContentPadding">
-		<m:Button text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle" type="Back"></m:Button>
+		<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
 
 		<Table rows="{JSONBufferModel>/Products}" selectionMode="None" visibleRowCount="7" ariaLabelledBy="title" id="MyTable" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" busyIndicatorDelay="0">
 			<columns>
@@ -61,7 +62,7 @@
 						<m:Text text="{JSONBufferModel>Discontinued}" wrapping="false" />
 					</template>
 				</Column>
-				
+
 			</columns>
 		</Table>
 

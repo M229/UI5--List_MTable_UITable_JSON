@@ -1,15 +1,17 @@
-<mvc:View controllerName="sap.ui.demo.MyApp.controller.ListItem" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+<mvc:View controllerName="sap.ui.demo.MyApp.controller.ListItem" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:custom="sap.ui.demo.MyApp.control">
     <Page id="page" title="{i18n>listItemPageTitle}" class="sapUiContentPadding">
 
-            <Button text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle" type="Back"></Button>
-            <Text id="MyText"> </Text>
-            <Panel>
-
-                    <List items="{ODataNorthwindModel>/Products}" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}">
-                        <items>
-                            <ObjectListItem title="{ODataNorthwindModel>ProductName}" ></ObjectListItem>
-                        </items>
-                    </List>
-            </Panel>      
+        <custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
+        <Text id="MyText"></Text>
+        <Panel>
+            <List items="{ODataNorthwindModel>/Products}" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}">
+                <items>
+                    <ObjectListItem title="{ODataNorthwindModel>ProductName}"></ObjectListItem>
+                </items>
+            </List>
+        </Panel>
     </Page>
 </mvc:View>
