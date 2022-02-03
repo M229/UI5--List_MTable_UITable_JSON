@@ -2,53 +2,98 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:custom="sap.ui.demo.MyApp.control">
-	<Page id="page" title="{i18n>mTablePageTitle}" enableScrolling="true" class="sapUiContentPadding">
-		<content>
-			<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
+	<Page id="page" title="{i18n>mTablePageTitle}" enableScrolling="false" class="sapUiContentPadding">
+		
+		<FlexBox alignItems="Start" justifyContent="SpaceBetween" 
+		
+		>
+		<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
 
-			<Table items="{JSONBufferModel>/Products}" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}">
-				<columns>
-					<Column>
-						<Label text="ProductName" />
-					</Column>
-					<Column>
-						<Label text="SupplierID" />
-					</Column>
-					<Column>
-						<Label text="CategoryID" />
-					</Column>
-					<Column>
-						<Label text="QuantityPerUnit" />
-					</Column>
-					<Column>
-						<Label text="UnitPrice" />
-					</Column>
-					<Column>
-						<Label text="UnitsInStock" />
-					</Column>
-					<Column>
-						<Label text="UnitsOnOrder" />
-					</Column>
-					<Column>
-						<Label text="ReorderLevel" />
-					</Column>
-					<Column>
-						<Label text="Discontinued" />
-					</Column>
-				</columns>
-				<ColumnListItem>
-					<Text text="{JSONBufferModel>ProductName}" />
-					<Text text="{JSONBufferModel>SupplierID}" />
-					<Text text="{JSONBufferModel>CategoryID}" />
-					<Text text="{JSONBufferModel>QuantityPerUnit}" />
-					<Text text="{JSONBufferModel>UnitPrice}" />
-					<Text text="{JSONBufferModel>UnitsInStock}" />
-					<Text text="{JSONBufferModel>UnitsOnOrder}" />
-					<Text text="{JSONBufferModel>ReorderLevel}" />
-					<Text text="{JSONBufferModel>Discontinued}" />
-				</ColumnListItem>
-			</Table>
+		<HBox alignItems="Center">
+			<Text text ="{i18n>switchText}" class="sapUiSmallMarginEnd"></Text>
+			<Switch state="{JSONStateModel>/SwitchDeleteMTable}" customTextOn=" " customTextOff=" " enabled="{= ${JSONStateModel>/State} === 'Done'}">
+			</Switch>
+		</HBox>
+	</FlexBox>
+<Table showNoData="false">
+	<columns>
+		<Column hAlign="Center">
+			<Label text="ProductName" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="SupplierID" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="CategoryID" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="QuantityPerUnit" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="UnitPrice" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="UnitsInStock" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="UnitsOnOrder" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="ReorderLevel" />
+		</Column>
+		<Column hAlign="Center">
+			<Label text="Discontinued" />
+		</Column>
+	</columns>
+</Table>
+			<ScrollContainer height="100%" width="100%" vertical="true">
+				<Table items="{JSONBufferModel_MTable>/Products}" 
+					busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" 
+					class="sapUiMediumMarginBottom"
+					mode="{= ${JSONStateModel>/SwitchDeleteMTable} === false ? 'None' : 'Delete'}">
+					<columns>
+						<Column hAlign="Center">
+							<!-- <Label text="ProductName" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="SupplierID" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="CategoryID" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="QuantityPerUnit" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="UnitPrice" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="UnitsInStock" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="UnitsOnOrder" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="ReorderLevel" /> -->
+						</Column>
+						<Column hAlign="Center">
+							<!-- <Label text="Discontinued" /> -->
+						</Column>
+					</columns>
+					<ColumnListItem>
+						<Text text="{JSONBufferModel_MTable>ProductName}" />
+						<Text text="{JSONBufferModel_MTable>SupplierID}" />
+						<Text text="{JSONBufferModel_MTable>CategoryID}" />
+						<Text text="{JSONBufferModel_MTable>QuantityPerUnit}" />
+						<Text text="{JSONBufferModel_MTable>UnitPrice}" />
+						<Text text="{JSONBufferModel_MTable>UnitsInStock}" />
+						<Text text="{JSONBufferModel_MTable>UnitsOnOrder}" />
+						<Text text="{JSONBufferModel_MTable>ReorderLevel}" />
+						<Text text="{JSONBufferModel_MTable>Discontinued}" />
+					</ColumnListItem>
+				</Table>
+			</ScrollContainer>
 
-		</content>
+
 	</Page>
 </mvc:View>

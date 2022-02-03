@@ -2,16 +2,31 @@
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:custom="sap.ui.demo.MyApp.control">
-    <Page id="page" title="{i18n>listItemPageTitle}" class="sapUiContentPadding">
+    <Page id="page" title="{i18n>listItemPageTitle}" class="sapUiContentPadding" enableScrolling="false">
+        <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+            <custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle">
+            </custom:ButtonBack>
 
-        <custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
-        <Text id="MyText"></Text>
-        <Panel>
-            <List items="{ODataNorthwindModel>/Products}" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}">
-                <items>
-                    <ObjectListItem title="{ODataNorthwindModel>ProductName}"></ObjectListItem>
-                </items>
-            </List>
-        </Panel>
+            <HBox alignItems="Center">
+                <Text text ="{i18n>switchText}" class="sapUiSmallMarginEnd"></Text>
+                <Switch state="{JSONStateModel>/SwitchDeleteListItem}" customTextOn=" " customTextOff=" "
+                    enabled="{= ${JSONStateModel>/State} === 'Done'}">
+                </Switch>  
+            </HBox>
+        </FlexBox>
+
+        <ScrollContainer height="100%" width="100%" vertical="true">
+            <Panel>
+                <List items="{JSONBufferModel_ListItem>/Products}" 
+                    busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" 
+                    mode="{= ${JSONStateModel>/SwitchDeleteListItem} === false ? 'None' : 'Delete'}">
+                    <items>
+                        <ObjectListItem title="{JSONBufferModel_ListItem>ProductName}">
+                        </ObjectListItem>
+                    </items>
+                </List>
+                
+            </Panel>
+        </ScrollContainer>
     </Page>
 </mvc:View>

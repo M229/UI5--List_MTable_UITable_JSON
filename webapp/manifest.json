@@ -76,10 +76,19 @@
 			"ODataNorthwindModel": {
 				"dataSource": "NorthwindDataSource"
 			},
-			"JSONBufferModel" : {
+			"JSONBufferModel_ListItem" : {
 				"type": "sap.ui.model.json.JSONModel"
 				
 			},
+			"JSONBufferModel_MTable" : {
+				"type": "sap.ui.model.json.JSONModel"
+
+			},
+			"JSONBufferModel_UITable" : {
+				"type": "sap.ui.model.json.JSONModel"
+
+			},
+			
 			"JSONStateModel" : {
 				"type": "sap.ui.model.json.JSONModel"
 

@@ -13,6 +13,9 @@ sap.ui.define([
 		init : function () {
 		},
 		renderer : ButtonRenderer,
-		// type : "Back"
+		
+		// renderer : function(oRm,oControl){
+        //     sap.m.SwitchRenderer.render(oRm,oControl);
+        // }
 	});
 });

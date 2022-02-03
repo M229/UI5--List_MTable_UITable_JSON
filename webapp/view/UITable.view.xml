@@ -4,67 +4,86 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:custom="sap.ui.demo.MyApp.control">
 	<m:Page id="page" title="{i18n>uiTablePageTitle}" class="sapUiContentPadding">
-		<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
+		<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
 
-		<Table rows="{JSONBufferModel>/Products}" selectionMode="None" visibleRowCount="7" ariaLabelledBy="title" id="MyTable" busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" busyIndicatorDelay="0">
-			<columns>
-				<Column width="11rem">
-					<m:Label text="ProductName" />
-					<template>
-						<m:Text text="{JSONBufferModel>ProductName}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="SupplierID" />
-					<template>
-						<m:Text text="{JSONBufferModel>SupplierID}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="CategoryID" />
-					<template>
-						<m:Text text="{JSONBufferModel>CategoryID}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="QuantityPerUnit" />
-					<template>
-						<m:Text text="{JSONBufferModel>QuantityPerUnit}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="UnitPrice" />
-					<template>
-						<m:Text text="{JSONBufferModel>UnitPrice}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="UnitsInStock" />
-					<template>
-						<m:Text text="{JSONBufferModel>UnitsInStock}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="UnitsOnOrder" />
-					<template>
-						<m:Text text="{ODataNorthwindModel>UnitsOnOrder}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="ReorderLevel" />
-					<template>
-						<m:Text text="{JSONBufferModel>ReorderLevel}" wrapping="false" />
-					</template>
-				</Column>
-				<Column width="11rem">
-					<m:Label text="Discontinued" />
-					<template>
-						<m:Text text="{JSONBufferModel>Discontinued}" wrapping="false" />
-					</template>
-				</Column>
+			<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
+			<m:HBox alignItems="Center">
+				<m:Text text ="{i18n>switchText}" class="sapUiSmallMarginEnd"></m:Text>
+				<m:Switch state="{JSONStateModel>/SwitchDeleteUITable}" customTextOn=" " customTextOff=" " change="onSwitchDeleteChange"
+					enabled="{= ${JSONStateModel>/State} === 'Done'}">
+				</m:Switch>
+			</m:HBox>
+		</m:FlexBox>
+		<m:VBox>
+			<Table rows="{JSONBufferModel_UITable>/Products}" 
+				visibleRowCount="20" 
+				ariaLabelledBy="title" id="MyTable" 
+				busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" 
+				busyIndicatorDelay="0"
+				selectionMode="{= ${JSONStateModel>/SwitchDeleteUITable} === false ? 'None' : 'MultiToggle'}">
+				<layoutData>
+					<m:FlexItemData growFactor="1" />
+				</layoutData>
+				<columns>
 
-			</columns>
-		</Table>
+					<Column width="11rem">
+						<m:Label text="ProductName" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>ProductName}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="SupplierID" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>SupplierID}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="CategoryID" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>CategoryID}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="QuantityPerUnit" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>QuantityPerUnit}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="UnitPrice" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>UnitPrice}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="UnitsInStock" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>UnitsInStock}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="UnitsOnOrder" />
+						<template>
+							<m:Text text="{ODataNortJSONBufferModel_UITablehwindModel>UnitsOnOrder}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="ReorderLevel" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>ReorderLevel}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="11rem">
+						<m:Label text="Discontinued" />
+						<template>
+							<m:Text text="{JSONBufferModel_UITable>Discontinued}" wrapping="false" />
+						</template>
+					</Column>
+				</columns>
+
+			</Table>
+		</m:VBox>
 
 
 	</m:Page>

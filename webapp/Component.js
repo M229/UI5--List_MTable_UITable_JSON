@@ -3,8 +3,9 @@ sap.ui.define([
 	"sap/ui/Device",
 	"sap/m/BusyDialog",
 	"sap/ui/model/json/JSONModel",
-	"./model/models"
-], function (UIComponent, Device, BusyDialog, JSONModel, models) {
+	"./model/models",
+	"sap/ui/model/Filter"
+], function (UIComponent, Device, BusyDialog, JSONModel, models, Filter) {
 	"use strict";
 
 	return UIComponent.extend("sap.ui.demo.MyApp.Component", {
@@ -28,29 +29,34 @@ sap.ui.define([
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 
-			//set oJSONBufferModel model
-			this.oBusy = new BusyDialog();
-			this.oBusy.setBusyIndicatorDelay(0);
-
 			var oJSONStateModel = this.getModel("JSONStateModel");
 			oJSONStateModel.setProperty("/State", "Default");
+			oJSONStateModel.setProperty("/SwitchDeleteListItem", false);
+			oJSONStateModel.setProperty("/SwitchDeleteMTable", false);
+			oJSONStateModel.setProperty("/SwitchDeleteUITable", false);
 
-			var oJSONBufferModel = this.getModel("JSONBufferModel");
+			var oJSONBufferModel_ListItem = this.getModel("JSONBufferModel_ListItem");
+			var oJSONBufferModel_MTable = this.getModel("JSONBufferModel_MTable");
+			var oJSONBufferModel_UITable = this.getModel("JSONBufferModel_UITable");
 			var oODataModel = this.getModel("ODataNorthwindModel");
 			
 			oJSONStateModel.setProperty("/State", "Reading");
 
 			oODataModel.read("/Products", {
+				// filters: [
+				// 	new Filter("ProductName", "EQ", "Chai")
+				// ],
 				success: function (oData) {
-					oJSONBufferModel.setProperty("/Products", oData.results);
+					oJSONBufferModel_ListItem.setProperty("/Products", oData.results);
+					oJSONBufferModel_MTable.setProperty("/Products", oData.results);
+					oJSONBufferModel_UITable.setProperty("/Products", oData.results);
 					oJSONStateModel.setProperty("/State", "Done");
+					
 				}.bind(this),
 				error: function () {
 					oJSONStateModel.setProperty("/State", "Done");
 				}.bind(this),
 			});
-
-
 		},
 
 		getContentDensityClass: function () {
