@@ -1,6 +1,6 @@
 <mvc:View controllerName="sap.ui.demo.MyApp.controller.Home" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
 	<Page id="page" title="{i18n>homePageTitle}" class="sapUiContentPadding">
-		<VBox>
+
 			<Panel>
 				<FlexBox direction="Column" alignItems="Center" renderType="Bare">
 					<Button text="{i18n>listItemNavBtnTitle}" press="onPressNavBtnListItem" width="40%"></Button>
@@ -8,7 +8,10 @@
 					<Button text="{i18n>uiTableNavBtnTitle}" press="onPressNavBtnUITable" width="40%"></Button>
 				</FlexBox>
 			</Panel>
-		</VBox>
+			<FlexBox direction="Row" alignItems="Center">
+				<Button text="Reset Data" press="setBufferModelsFromOdata"></Button>
+			</FlexBox>
+		
 
 	</Page>
 </mvc:View>

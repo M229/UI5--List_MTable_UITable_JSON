@@ -34,7 +34,9 @@ sap.ui.define([
 			oJSONStateModel.setProperty("/SwitchDeleteListItem", false);
 			oJSONStateModel.setProperty("/SwitchDeleteMTable", false);
 			oJSONStateModel.setProperty("/SwitchDeleteUITable", false);
+			oJSONStateModel.setProperty("/EnableleButtonDeleteUITable", false);
 
+			var oJSONODataModel = this.getModel("JSONODataModel");
 			var oJSONBufferModel_ListItem = this.getModel("JSONBufferModel_ListItem");
 			var oJSONBufferModel_MTable = this.getModel("JSONBufferModel_MTable");
 			var oJSONBufferModel_UITable = this.getModel("JSONBufferModel_UITable");
@@ -47,9 +49,10 @@ sap.ui.define([
 				// 	new Filter("ProductName", "EQ", "Chai")
 				// ],
 				success: function (oData) {
-					oJSONBufferModel_ListItem.setProperty("/Products", oData.results);
-					oJSONBufferModel_MTable.setProperty("/Products", oData.results);
-					oJSONBufferModel_UITable.setProperty("/Products", oData.results);
+					oJSONODataModel = oData.results;
+					oJSONBufferModel_ListItem.setProperty("/Products", JSONOData.slice());
+					oJSONBufferModel_MTable.setProperty("/Products", JSONOData.slice());
+					oJSONBufferModel_UITable.setProperty("/Products", JSONOData.slice());
 					oJSONStateModel.setProperty("/State", "Done");
 					
 				}.bind(this),

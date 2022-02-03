@@ -8,19 +8,25 @@
 
 			<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
 			<m:HBox alignItems="Center">
-				<m:Text text ="{i18n>switchText}" class="sapUiSmallMarginEnd"></m:Text>
+				<m:Button text="{i18n>deleteBtnText}" 
+					type="Reject" 
+					visible="{JSONStateModel>/SwitchDeleteUITable}" 
+					enabled="{JSONStateModel>/EnableleButtonDeleteUITable}"
+					press="onPressDeleteBtnUITable"></m:Button>
+				<m:Text text ="{i18n>switchText}" class="sapUiSmallMarginBeginEnd"></m:Text>
 				<m:Switch state="{JSONStateModel>/SwitchDeleteUITable}" customTextOn=" " customTextOff=" " change="onSwitchDeleteChange"
 					enabled="{= ${JSONStateModel>/State} === 'Done'}">
 				</m:Switch>
 			</m:HBox>
 		</m:FlexBox>
 		<m:VBox>
-			<Table rows="{JSONBufferModel_UITable>/Products}" 
+			<Table rows="{JSONBufferModel_UITable>/Products}"
 				visibleRowCount="20" 
 				ariaLabelledBy="title" id="MyTable" 
 				busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" 
 				busyIndicatorDelay="0"
-				selectionMode="{= ${JSONStateModel>/SwitchDeleteUITable} === false ? 'None' : 'MultiToggle'}">
+				selectionMode="{= ${JSONStateModel>/SwitchDeleteUITable} === false ? 'None' : 'MultiToggle'}"
+				rowSelectionChange="onRowSelectionChange">
 				<layoutData>
 					<m:FlexItemData growFactor="1" />
 				</layoutData>

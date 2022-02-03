@@ -81,6 +81,7 @@
 						</Column>
 					</columns>
 					<ColumnListItem>
+						
 						<Text text="{JSONBufferModel_MTable>ProductName}" />
 						<Text text="{JSONBufferModel_MTable>SupplierID}" />
 						<Text text="{JSONBufferModel_MTable>CategoryID}" />
@@ -90,7 +91,9 @@
 						<Text text="{JSONBufferModel_MTable>UnitsOnOrder}" />
 						<Text text="{JSONBufferModel_MTable>ReorderLevel}" />
 						<Text text="{JSONBufferModel_MTable>Discontinued}" />
+							
 					</ColumnListItem>
+				
 				</Table>
 			</ScrollContainer>
 
