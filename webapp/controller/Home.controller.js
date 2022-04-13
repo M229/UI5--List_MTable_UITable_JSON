@@ -9,14 +9,13 @@ sap.ui.define([
 		formatter: formatter,
 
 		onInit: function () {
-
+		
 		},
 
 		onPressNavBtnListItem: function (oEvent) {
             var oRouter = this.getOwnerComponent().getRouter();
             this.resetSwitchState();
 			oRouter.navTo("listItem");
-			
         },
 
 		onPressNavBtnMTable: function (oEvent) {

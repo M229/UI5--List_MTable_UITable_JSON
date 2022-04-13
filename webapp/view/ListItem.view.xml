@@ -9,7 +9,7 @@
 
             <HBox alignItems="Center">
                 <Text text ="{i18n>switchText}" class="sapUiSmallMarginEnd"></Text>
-                <Switch state="{JSONStateModel>/SwitchDeleteListItem}" customTextOn=" " customTextOff=" "
+                <Switch state="{JSONStateModel>/isSwitchDeleteListItemOn}" customTextOn=" " customTextOff=" "
                     enabled="{= ${JSONStateModel>/State} === 'Done'}">
                 </Switch>  
             </HBox>
@@ -17,12 +17,9 @@
 
         <ScrollContainer height="100%" width="100%" vertical="true">
             <Panel>
-                <List items="{JSONBufferModel_ListItem>/Products}" 
-                    busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" 
-                    mode="{= ${JSONStateModel>/SwitchDeleteListItem} === false ? 'None' : 'Delete'}">
+                <List items="{JSONBufferModel_MTable>/Products}">
                     <items>
-                        <ObjectListItem title="{JSONBufferModel_ListItem>ProductName}">
-                        </ObjectListItem>
+                        <ObjectListItem title="{JSONBufferModel_MTable>ProductName}"></ObjectListItem>
                     </items>
                 </List>
                 

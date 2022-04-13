@@ -9,9 +9,7 @@
 				</FlexBox>
 			</Panel>
 			<FlexBox direction="Row" alignItems="Center">
-				<Button text="Reset Data" press="setBufferModelsFromOdata"></Button>
+				<Button text="Reset Data" press="setBufferModelsFromOdata" enabled="{JSONStateModel>/isBufferModelChanged}"></Button>
 			</FlexBox>
-		
-
 	</Page>
 </mvc:View>

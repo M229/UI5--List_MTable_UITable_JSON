@@ -21,32 +21,33 @@ sap.ui.define([
 		onRowSelectionChange: function () {
 			var aIndices = this.byId("MyTable").getSelectedIndices(),
 				oJSONStateModel = this.getOwnerComponent().getModel("JSONStateModel"),
-				bEnableleButtonDeleteUITable = oJSONStateModel.getProperty("/EnableleButtonDeleteUITable");
+				bIsButtonDeleteUITableEnabled = oJSONStateModel.getProperty("/isButtonDeleteUITableEnabled");
 
-			if (!bEnableleButtonDeleteUITable && aIndices.length > 0) {
-				oJSONStateModel.setProperty("/EnableleButtonDeleteUITable", true);
-			} else if (bEnableleButtonDeleteUITable && aIndices.length <= 0) {
-				oJSONStateModel.setProperty("/EnableleButtonDeleteUITable", false);
+			if (!bIsButtonDeleteUITableEnabled && aIndices.length > 0) {
+				oJSONStateModel.setProperty("/isButtonDeleteUITableEnabled", true);
+			} else if (bIsButtonDeleteUITableEnabled && aIndices.length <= 0) {
+				oJSONStateModel.setProperty("/isButtonDeleteUITableEnabled", false);
 			}			
 		},
 
 		onPressDeleteBtnUITable: function () {
 			var aIndices = this.byId("MyTable").getSelectedIndices(),
 				oJSONBufferModel_UITable = this.getOwnerComponent().getModel("JSONBufferModel_UITable"),
-				aData = oJSONBufferModel_UITable.getProperty("/Products");
+				aData = oJSONBufferModel_UITable.getProperty("/Products"),
+				oJSONStateModel = this.getOwnerComponent().getModel("JSONStateModel");
+				
 
 			if (aIndices.length > 0) {
 				aIndices.forEach(function (element) {
-					aData.splice(element, 1);
+					aData[element] = {};
 				});
 
-				
+				aData = aData.filter(value => Object.keys(value).length !== 0);
 				oJSONBufferModel_UITable.setProperty("/Products", aData);
+				oJSONStateModel.setProperty("/isBufferModelChanged", true);
 			}
 
 			this.byId("MyTable").clearSelection();
 		}
-
-
 	});
 });

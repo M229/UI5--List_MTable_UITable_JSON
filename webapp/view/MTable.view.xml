@@ -10,8 +10,8 @@
 		<custom:ButtonBack text="{i18n>backNavBtnTitle}" press="onBackNavBtnTitle"></custom:ButtonBack>
 
 		<HBox alignItems="Center">
-			<Text text ="{i18n>switchText}" class="sapUiSmallMarginEnd"></Text>
-			<Switch state="{JSONStateModel>/SwitchDeleteMTable}" customTextOn=" " customTextOff=" " enabled="{= ${JSONStateModel>/State} === 'Done'}">
+			<Text text ="{i18n>switchText}" class="sapUiSmallMarginBeginEnd"></Text>
+			<Switch state="{JSONStateModel>/isSwitchDeleteMTableOn}" customTextOn=" " customTextOff=" " enabled="{= ${JSONStateModel>/State} === 'Done'}">
 			</Switch>
 		</HBox>
 	</FlexBox>
@@ -48,9 +48,10 @@
 </Table>
 			<ScrollContainer height="100%" width="100%" vertical="true">
 				<Table items="{JSONBufferModel_MTable>/Products}" 
-					busy="{= ${JSONStateModel>/State} === 'Done' ? false : true}" 
+					busy="false" 
 					class="sapUiMediumMarginBottom"
-					mode="{= ${JSONStateModel>/SwitchDeleteMTable} === false ? 'None' : 'Delete'}">
+					mode="{= ${JSONStateModel>/isSwitchDeleteMTableOn} === false ? 'None' : 'Delete'}"
+					delete="onPressCrossBtnListBase">
 					<columns>
 						<Column hAlign="Center">
 							<!-- <Label text="ProductName" /> -->

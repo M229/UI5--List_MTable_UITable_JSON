@@ -17,7 +17,7 @@ sap.ui.define([
 
         onBackNavBtnTitle: function (oEvent) {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("home");
+            oRouter.navTo("home");	
         }
 	});
 });

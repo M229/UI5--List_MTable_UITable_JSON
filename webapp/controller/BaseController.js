@@ -18,11 +18,16 @@ sap.ui.define([
 			var oJSONBufferModel_ListItem = this.getOwnerComponent().getModel("JSONBufferModel_ListItem"),
 				oJSONBufferModel_MTable = this.getOwnerComponent().getModel("JSONBufferModel_MTable"),
 				oJSONBufferModel_UITable = this.getOwnerComponent().getModel("JSONBufferModel_UITable"),
-				oODataModel = this.getOwnerComponent().getModel("ODataNorthwindModel");
+				oJSONODataModel = this.getOwnerComponent().getModel("JSONODataModel"),
+				aProducts = oJSONODataModel.getProperty("/Products"),
+				oJSONStateModel = this.getOwnerComponent().getModel("JSONStateModel");
 			
-			oJSONBufferModel_ListItem.setProperty("/Products", oODataModel.getProperty("/Products"));
-			oJSONBufferModel_MTable.setProperty("/Products", oODataModel.getProperty("/Products"));
-			oJSONBufferModel_UITable.setProperty("/Products", oODataModel.getProperty("/Products"));
+			oJSONBufferModel_ListItem.setProperty("/Products", aProducts.slice());
+			oJSONBufferModel_MTable.setProperty("/Products", aProducts.slice());
+			oJSONBufferModel_UITable.setProperty("/Products", aProducts.slice());
+
+			oJSONStateModel.setProperty("/isBufferModelChanged", false);
+			
 				
 		},
 
@@ -30,10 +35,24 @@ sap.ui.define([
 
 			var oJSONStateModel = this.getOwnerComponent().getModel("JSONStateModel");
 
-			oJSONStateModel.setProperty("/SwitchDeleteListItem", false);
-			oJSONStateModel.setProperty("/SwitchDeleteMTable", false);
-			oJSONStateModel.setProperty("/SwitchDeleteUITable", false);
+			oJSONStateModel.setProperty("/isSwitchDeleteListItemOn", false);
+			oJSONStateModel.setProperty("/isSwitchDeleteMTableOn", false);
+			oJSONStateModel.setProperty("/isSwitchDeleteUITableOn", false);
 
+		},
+
+		onPressCrossBtnListBase: function (oEvent) {
+			var sBindingPath = oEvent.getParameter("listItem").getBindingContextPath(),
+				oJSONBufferModel_ListItem = this.getOwnerComponent().getModel("JSONBufferModel_ListItem"),
+				oJSONStateModel = this.getOwnerComponent().getModel("JSONStateModel"),
+				aProducts = oJSONBufferModel_ListItem.getProperty("/Products"),
+				aBindingPath = sBindingPath.split("/"),
+				dPosition = +aBindingPath[aBindingPath.length - 1];
+				
+				aProducts.splice(dPosition, 1);
+
+				oJSONBufferModel_ListItem.setProperty("/Products", aProducts);
+				oJSONStateModel.setProperty("/isBufferModelChanged", true);
 		}
 
 
